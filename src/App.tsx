@@ -10,7 +10,7 @@ function App() {
       <a
                   onClick={ ( e ) => { e.stopPropagation() } }
                   href={
-                    'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=770y0r3cs7ut8d&redirect_uri=https://www.admiralcloud.com&state=DCEeFWf45A53sdfKef424&scope=r_liteprofile%20r_emailaddress%20w_member_social'
+                    'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=770y0r3cs7ut8d&redirect_uri=https%3A%2F%2Fcompetent-colden-5df94a.netlify.app%2F&state=DCEeFWf45A53sdfKef424&scope=r_liteprofile%20r_emailaddress%20w_member_social'
                   }
                   target='_blank'
                   rel='noreferrer'
