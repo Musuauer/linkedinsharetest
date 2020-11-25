@@ -53,7 +53,7 @@ function App() {
                  <a
                   onClick={ () => handleClick() }
                   href={
-                    `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${client_id}&redirect_uri=${redirect_uri}&state=DCEeFWf45A53sdfKef424&scope=r_liteprofile%20r_emailaddress%20w_member_social`
+                    `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${client_id}&redirect_uri=${redirect_uri}&state=DCEeFWf45A53sdfKef42&scope=r_liteprofile%20r_emailaddress%20w_member_social`
                   }
                   target='_blank'
                   rel='noreferrer'
