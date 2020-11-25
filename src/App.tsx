@@ -8,7 +8,7 @@ import { getUrlQueryParameter } from './urlQueryParameter/urlQueryParameter'
 function App() {
 
   const client_id: string = '770y0r3cs7ut8d'
-  const redirect_uri: string = 'https%3A%2F%2Fcompetent-colden-5df94a.netlify.app'
+  const redirect_uri: string = 'https%3A%2F%2Fcompetent-colden-5df94a.netlify.app%2F'
   const client_secret: string = '33bihXaNnNYH9VWo'
 
   const getToken = ( code: string | null | true ) => {
@@ -45,7 +45,7 @@ function App() {
     console.log('handle click')
     const code: string | null | true = getUrlQueryParameter( 'code' )
     console.log('code', code)
-    getToken( code )
+    // getToken( code )
   }
   return (
     <div className="App">
