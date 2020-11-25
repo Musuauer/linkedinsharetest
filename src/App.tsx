@@ -18,7 +18,9 @@ function App() {
       url: 'https://www.linkedin.com/oauth/v2/accessToken',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Methods':'GET,PUT,PATCH,POST,DELETE',
+       'Access-Control-Allow-Origin':'*',
+       'Access-Control-Request-Headers':'Origin, X-Requested-With, Content-Type, Accept'
       },
       params: {
         grant_type: 'authorization_code',
@@ -32,6 +34,10 @@ function App() {
       console.log(res);
       console.log(res.data);
     })
+    .catch( error => {
+      console.log('error', error)
+    }
+      )
 
   }
 
