@@ -12,10 +12,14 @@ function App() {
   const client_secret: string = '33bihXaNnNYH9VWo'
 
   const getToken = ( code: string | null | true ) => {
+    console.log('get token')
     axios({
       method: 'post',
       url: 'https://www.linkedin.com/oauth/v2/accessToken',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        "Access-Control-Allow-Origin": "*",
+      },
       params: {
         grant_type: 'authorization_code',
         code: code,
