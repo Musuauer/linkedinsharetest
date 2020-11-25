@@ -19,7 +19,7 @@ function App() {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Access-Control-Allow-Methods':'GET,PUT,PATCH,POST,DELETE',
-       'Access-Control-Allow-Origin':'*',
+       'Access-Control-Allow-Origin': redirect_uri,
        'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept'
       },
       params: {
@@ -45,7 +45,7 @@ function App() {
     console.log('handle click')
     const code: string | null | true = getUrlQueryParameter( 'code' )
     console.log('code', code)
-    getToken( code )
+    code && getToken( code )
   }
   return (
     <div className="App">
