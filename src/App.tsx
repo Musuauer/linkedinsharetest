@@ -1,13 +1,41 @@
 import React from 'react';
+import axios from 'axios';
+
 import Icon from './Icon/Icon'
 import './App.css';
 import { getUrlQueryParameter } from './urlQueryParameter/urlQueryParameter'
 
 function App() {
+
+  const client_id: string = '770y0r3cs7ut8d'
+  const redirect_uri: string = 'https%3A%2F%2Fcompetent-colden-5df94a.netlify.app'
+  const client_secret: string = '33bihXaNnNYH9VWo'
+
+  const getToken = ( code: string | null | true ) => {
+    axios({
+      method: 'post',
+      url: 'https://www.linkedin.com/oauth/v2/accessToken',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      params: {
+        grant_type: 'authorization_code',
+        code: code,
+        redirect_uri: redirect_uri,
+        client_id: client_id,
+        client_secret: client_secret
+      },
+    }
+  ).then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
+
+  }
+
   const handleClick = () => {
     console.log('handle click')
-    const code = getUrlQueryParameter( 'code' )
+    const code: string | null | true = getUrlQueryParameter( 'code' )
     console.log('code', code)
+    getToken( code )
   }
   return (
     <div className="App">
@@ -15,7 +43,7 @@ function App() {
                  <a
                   onClick={ () => handleClick() }
                   href={
-                    'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=770y0r3cs7ut8d&redirect_uri=https%3A%2F%2Fcompetent-colden-5df94a.netlify.app%2F&state=DCEeFWf45A53sdfKef424&scope=r_liteprofile%20r_emailaddress%20w_member_social'
+                    `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${client_id}&redirect_uri=${redirect_uri}&state=DCEeFWf45A53sdfKef424&scope=r_liteprofile%20r_emailaddress%20w_member_social`
                   }
                   target='_blank'
                   rel='noreferrer'
