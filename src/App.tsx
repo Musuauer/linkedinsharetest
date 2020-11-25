@@ -45,7 +45,7 @@ function App() {
     console.log('handle click')
     const code: string | null | true = getUrlQueryParameter( 'code' )
     console.log('code', code)
-    // getToken( code )
+    getToken( code )
   }
   return (
     <div className="App">
