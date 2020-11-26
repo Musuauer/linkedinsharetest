@@ -26,13 +26,13 @@ function App() {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Access-Control-Allow-Methods':'GET,PUT,PATCH,POST,DELETE',
-       'Access-Control-Allow-Origin': 'https://competent-colden-5df94a.netlify.app/',
+       'Access-Control-Allow-Origin': '*',
        'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept'
       },
       data: {
         grant_type: 'authorization_code',
         code: code,
-        redirect_uri: 'https://competent-colden-5df94a.netlify.app/',
+        redirect_uri: redirect_uri,
         client_id: client_id,
         client_secret: client_secret
       },
