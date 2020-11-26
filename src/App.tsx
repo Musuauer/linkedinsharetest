@@ -8,7 +8,7 @@ import { getUrlQueryParameter, clearParams } from './urlQueryParameter/urlQueryP
 function App() {
   const client_id: string = '770y0r3cs7ut8d'
   // let redirect_uri: string = 'https%3A%2F%2Fcompetent-colden-5df94a.netlify.app%2F'
-  let redirect_uri: string = 'https://competent-colden-5df94a.netlify.app/'
+  let redirect_uri: string = 'https://cors-anywhere.herokuapp.com/https://competent-colden-5df94a.netlify.app/'
   const client_secret: string = '33bihXaNnNYH9VWo'
   const state: string = 'asdgsdffoih243'
   const local_uri: string = 'http://localhost:3000/'
@@ -57,8 +57,9 @@ function App() {
         )
 
     }
-
-    urlCode && getToken( urlCode )
+    if ( state === returnState ) {
+      urlCode && getToken( urlCode )
+    } else console.log('state and returnState are different')
 
 
 
