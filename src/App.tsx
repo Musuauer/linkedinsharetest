@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import Icon from './Icon/Icon'
@@ -6,10 +6,17 @@ import './App.css';
 import { getUrlQueryParameter } from './urlQueryParameter/urlQueryParameter'
 
 function App() {
-
   const client_id: string = '770y0r3cs7ut8d'
   const redirect_uri: string = 'https%3A%2F%2Fcompetent-colden-5df94a.netlify.app%2F'
   const client_secret: string = '33bihXaNnNYH9VWo'
+
+
+  useEffect(() => {
+    const urlCode: string | null | true = getUrlQueryParameter( 'code' )
+    console.log('urlCode', urlCode)
+    urlCode && getToken( urlCode )
+
+  }, [])
 
   const getToken = ( code: string | null | true ) => {
     console.log('get token')
@@ -43,9 +50,7 @@ function App() {
 
   const handleClick = () => {
     console.log('handle click')
-    const code: string | null | true = getUrlQueryParameter( 'code' )
-    console.log('code', code)
-    code && getToken( code )
+
   }
   return (
     <div className="App">
@@ -55,8 +60,8 @@ function App() {
                   href={
                     `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${client_id}&redirect_uri=${redirect_uri}&state=DCEeFWf45A53sdfKef42&scope=r_liteprofile%20r_emailaddress%20w_member_social`
                   }
-                  target='_blank'
-                  rel='noreferrer'
+                  // target='_blank'
+                  // rel='noreferrer'
                   >
                     <Icon
                       className='social-icon'
