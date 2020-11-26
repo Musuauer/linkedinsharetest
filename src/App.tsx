@@ -3,50 +3,66 @@ import axios from 'axios';
 
 import Icon from './Icon/Icon'
 import './App.css';
-import { getUrlQueryParameter } from './urlQueryParameter/urlQueryParameter'
+import { getUrlQueryParameter, clearParams } from './urlQueryParameter/urlQueryParameter'
 
 function App() {
   const client_id: string = '770y0r3cs7ut8d'
-  const redirect_uri: string = 'https%3A%2F%2Fcompetent-colden-5df94a.netlify.app%2F'
+  let redirect_uri: string = 'https%3A%2F%2Fcompetent-colden-5df94a.netlify.app%2F'
   const client_secret: string = '33bihXaNnNYH9VWo'
+  const state: string = 'asdgsdffoih243'
+  const local_uri: string = 'http://localhost:3000/'
+
+  // redirect_uri = local_uri
+
 
 
   useEffect(() => {
     const urlCode: string | null | true = getUrlQueryParameter( 'code' )
+    const returnState: string | null | true = getUrlQueryParameter( 'state' )
+
     console.log('urlCode', urlCode)
+    console.log('state', state)
+    console.log('returnState', returnState)
+    clearParams()
+
+    const getToken = ( code: string | null | true ) => {
+      console.log('get token')
+      axios({
+        method: 'post',
+        url: 'https://www.linkedin.com/oauth/v2/accessToken',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Access-Control-Allow-Methods':'GET,PUT,PATCH,POST,DELETE',
+         'Access-Control-Allow-Origin': '*',
+         'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept',
+        },
+        params: {
+          grant_type: 'authorization_code',
+          code: code,
+          redirect_uri: redirect_uri,
+          client_id: client_id,
+          client_secret: client_secret
+        },
+      }
+    ).then(res => {
+        console.log('res',res);
+        console.log( 'res.data', res.data);
+      })
+      .catch( error => {
+        console.log('error', error)
+      }
+        )
+
+    }
+
     urlCode && getToken( urlCode )
 
-  }, [])
 
-  const getToken = ( code: string | null | true ) => {
-    console.log('get token')
-    axios({
-      method: 'post',
-      url: 'https://www.linkedin.com/oauth/v2/accessToken',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Access-Control-Allow-Methods':'GET,PUT,PATCH,POST,DELETE',
-       'Access-Control-Allow-Origin': '*',
-       'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept'
-      },
-      data: {
-        grant_type: 'authorization_code',
-        code: code,
-        redirect_uri: redirect_uri,
-        client_id: client_id,
-        client_secret: client_secret
-      },
-    }
-  ).then(res => {
-      console.log(res);
-      console.log(res.data);
-    })
-    .catch( error => {
-      console.log('error', error)
-    }
-      )
 
-  }
+
+  }, [redirect_uri])
+
+
 
   const handleClick = () => {
     console.log('handle click')
@@ -58,7 +74,7 @@ function App() {
                  <a
                   onClick={ () => handleClick() }
                   href={
-                    `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${client_id}&redirect_uri=${redirect_uri}&state=DCEeFWf45A53sdfKef42&scope=r_liteprofile%20r_emailaddress%20w_member_social`
+                    `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${client_id}&redirect_uri=${redirect_uri}&state=${state}&scope=r_liteprofile%20r_emailaddress%20w_member_social`
                   }
                   // target='_blank'
                   // rel='noreferrer'
