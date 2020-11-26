@@ -29,7 +29,7 @@ function App() {
        'Access-Control-Allow-Origin': 'https://competent-colden-5df94a.netlify.app/',
        'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept'
       },
-      params: {
+      data: {
         grant_type: 'authorization_code',
         code: code,
         redirect_uri: 'https://competent-colden-5df94a.netlify.app/',
