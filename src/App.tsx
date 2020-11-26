@@ -7,10 +7,13 @@ import { getUrlQueryParameter, clearParams } from './urlQueryParameter/urlQueryP
 
 function App() {
   const client_id: string = '770y0r3cs7ut8d'
-  let redirect_uri: string = 'https%3A%2F%2Fcompetent-colden-5df94a.netlify.app%2F'
+  // let redirect_uri: string = 'https%3A%2F%2Fcompetent-colden-5df94a.netlify.app%2F'
+  let redirect_uri: string = 'https://competent-colden-5df94a.netlify.app/'
   const client_secret: string = '33bihXaNnNYH9VWo'
   const state: string = 'asdgsdffoih243'
   const local_uri: string = 'http://localhost:3000/'
+
+  const access_token = 'AQVVGw0zf-QW9IyMa8sBcI87USBkCQRJ-a3tSc_5yVMxJnh9kq1DEHx6ItdN4CK79CK-kmSHgfoGZxHArzwh2uW5ZU0jU3gqXrzOdL9zVpH_SZ1k3BLfWgcbfoh5icubOy6XHOqsyi2DcU_YPovAfnUZF1TxGYOMnnvMgt0AY3Nrz0QldcOLLNxLGZYuKgrHg1yQ6SoCx406SaHVgZ9W6K0SZWyiDs7jdZhCgvaf-kC5jB49tQyIHkVukyDVwWtImtzSWgt_oyIt38dFTK11WifaRqb2JZ4bqZ2GZuwCJTJ2Hf34yuQ2JI4gDD92XOEb_KvFoS8E5-Y7alv8bGFjYBBW2Im73g'
 
   // redirect_uri = local_uri
 
